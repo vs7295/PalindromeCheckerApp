@@ -8,7 +8,8 @@ public class PalindromeCheckerApp {
         // Loop only till half of the string length
         for (int i = 0; i < input.length() / 2; i++) {
 
-            if (input.charAt(i) != input.charAt(input.length() - i - 1)) {
+            if(input.charAt(i) != input.charAt(input.length() - i - 1)) {
+
                 isPalindrome = false;
                 break;
             }
