@@ -1,31 +1,34 @@
-public class CompareCharacters {
+import java.util.Scanner;
+import java.util.Stack;
+
+public class PalindromeStack {
+
     public static void main(String[] args) {
 
-        String str = "level";
+        Scanner sc = new Scanner(System.in);
+        Stack<Character> stack = new Stack<>();
 
-        // Convert string to character array
-        char[] chars = str.toCharArray();
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
 
-        // Two pointers
-        int start = 0;
-        int end = chars.length - 1;
-
-        boolean isSame = true;
-
-        // Compare characters
-        while (start < end) {
-            if (chars[start] != chars[end]) {
-                isSame = false;
-                break;
-            }
-            start++;
-            end--;
+        // Push characters into stack
+        for (int i = 0; i < str.length(); i++) {
+            stack.push(str.charAt(i));
         }
 
-        if (isSame) {
-            System.out.println("Characters match (Palindrome)");
+        // Pop characters and build reversed string
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed = reversed + stack.pop();
+        }
+
+        // Compare original and reversed string
+        if (str.equals(reversed)) {
+            System.out.println("The string is a Palindrome");
         } else {
-            System.out.println("Characters do not match");
+            System.out.println("The string is NOT a Palindrome");
         }
+
+        sc.close();
     }
 }
