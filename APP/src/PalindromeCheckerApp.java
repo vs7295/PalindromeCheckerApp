@@ -1,38 +1,31 @@
-import java.util.Scanner;
-
-public class UseCase4PalindromeCheckerApp {
-
+public class CompareCharacters {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter a string: ");
-        String input = sc.nextLine();
+        String str = "level";
 
         // Convert string to character array
-        char[] arr = input.toCharArray();
+        char[] chars = str.toCharArray();
 
+        // Two pointers
         int start = 0;
-        int end = arr.length - 1;
+        int end = chars.length - 1;
 
-        boolean isPalindrome = true;
+        boolean isSame = true;
 
-        // Two pointer comparison
+        // Compare characters
         while (start < end) {
-            if (arr[start] != arr[end]) {
-                isPalindrome = false;
+            if (chars[start] != chars[end]) {
+                isSame = false;
                 break;
             }
             start++;
             end--;
         }
 
-        if (isPalindrome) {
-            System.out.println("The string is a Palindrome.");
+        if (isSame) {
+            System.out.println("Characters match (Palindrome)");
         } else {
-            System.out.println("The string is NOT a Palindrome.");
+            System.out.println("Characters do not match");
         }
-
-        sc.close();
     }
 }
