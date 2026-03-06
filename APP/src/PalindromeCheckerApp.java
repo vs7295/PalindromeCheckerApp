@@ -1,34 +1,34 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class PalindromeStack {
-
+public class QueueStackDemo {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        String str = "HELLO";
+
+        // Queue for FIFO
+        Queue<Character> queue = new LinkedList<>();
+
+        // Stack for LIFO
         Stack<Character> stack = new Stack<>();
 
-        System.out.print("Enter a string: ");
-        String str = sc.nextLine();
-
-        // Push characters into stack
+        // Enqueue and Push characters
         for (int i = 0; i < str.length(); i++) {
-            stack.push(str.charAt(i));
+            char ch = str.charAt(i);
+
+            queue.add(ch);   // Enqueue
+            stack.push(ch);  // Push
         }
 
-        // Pop characters and build reversed string
-        String reversed = "";
+        System.out.println("Queue (FIFO) Output:");
+        while (!queue.isEmpty()) {
+            System.out.print(queue.remove() + " "); // Dequeue
+        }
+
+        System.out.println();
+
+        System.out.println("Stack (LIFO) Output:");
         while (!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+            System.out.print(stack.pop() + " "); // Pop
         }
-
-        // Compare original and reversed string
-        if (str.equals(reversed)) {
-            System.out.println("The string is a Palindrome");
-        } else {
-            System.out.println("The string is NOT a Palindrome");
-        }
-
-        sc.close();
     }
 }
