@@ -1,34 +1,36 @@
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
 
-public class QueueStackDemo {
+public class DequeCompare {
+
     public static void main(String[] args) {
 
-        String str = "HELLO";
+        String str = "madam";   // Input string
+        Deque<Character> deque = new LinkedList<>();
 
-        // Queue for FIFO
-        Queue<Character> queue = new LinkedList<>();
-
-        // Stack for LIFO
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue and Push characters
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-
-            queue.add(ch);   // Enqueue
-            stack.push(ch);  // Push
+        // Insert characters into deque
+        for (char c : str.toCharArray()) {
+            deque.addLast(c);
         }
 
-        System.out.println("Queue (FIFO) Output:");
-        while (!queue.isEmpty()) {
-            System.out.print(queue.remove() + " "); // Dequeue
+        boolean isPalindrome = true;
+
+        // Compare front and rear characters
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        System.out.println();
-
-        System.out.println("Stack (LIFO) Output:");
-        while (!stack.isEmpty()) {
-            System.out.print(stack.pop() + " "); // Pop
+        // Print result
+        if (isPalindrome) {
+            System.out.println(str + " is a Palindrome");
+        } else {
+            System.out.println(str + " is Not a Palindrome");
         }
     }
 }
